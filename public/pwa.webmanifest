@@ -1,0 +1,16 @@
+{
+    "name": "Viper支付系统",
+    "short_name": "VPay",
+    "description": "这是加入Viper Prime的入口，将为Viper Prime会员提供更好的用户体验",
+    "icons": [
+        {
+            "src": "logo.png",
+            "sizes": "200x200",
+            "type": "image/png"
+        }
+    ],
+    "start_url": "index.html",
+    "display": "fullscreen",
+    "theme_color": "#bbdefb",
+    "background_color": "#bbdefb"
+}
