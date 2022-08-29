@@ -2,7 +2,7 @@ import express from 'express'
 import { v4 as uuidv4 } from 'uuid'
 import {User} from "./user";
 import {
-    checkstatus,
+    checkstatus, checkuserinfo,
     createorder,
     getallorder,
     getuserorder,
@@ -84,5 +84,12 @@ app.get('/api/getallorder', (req, res) => {
     const password = req.query.password
     const user = new User(username, password)
     getallorder(user, res)
+})
+app.post('/api/checkuserinfo', (req, res) => {
+    const username = req.body.username
+    const password = req.body.password
+    const user = new User(username, password)
+    const key = req.body.key
+    checkuserinfo(user, key, res)
 })
 module.exports = app

@@ -233,3 +233,20 @@ export function rejectorder(user, key, secret, res) {
         res.send(status)
     })
 }
+export function checkuserinfo(user, key, res) {
+    client.connect(async () => {
+        if (key !== user.username + user.password) {
+            const errStatus = new Status(0, 'checkuserinfo', 'invalid operation')
+            res.send(errStatus)
+            return
+        }
+        const userCollection = client.db('viper').collection('user')
+        const userResult = await userCollection.findOne({username: user.username, password: user.password})
+        if (userResult === null) {
+            const errStatus = new Status(0, 'checkuserinfo', 'auth error')
+            res.send(errStatus)
+            return
+        }
+        res.send(userResult)
+    })
+}
